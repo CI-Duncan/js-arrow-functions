@@ -11,14 +11,16 @@
     <div id="content"></div>
 
     <script>
-        fetch("https://ci-swapi.herokuapp.com/api/")
-            .then(response => response.text()) // or .json()
-            .then(data => {
-                document.getElementById("content").innerText = data;
+        fetch("https://ci-swapi.herokuapp.com/api/")                        //Promise When x
+            .then(response => response.text()) // or .json()                //Promise Then y
+            .then(data => displayData(data))
+            .catch((e) => {                                                 //Promise Catch (if not y then z)
+                console.error("Error: ", e);
             })
-            .catch((e) => {
-                console.log("Error: ", e);
-            })
+
+        function displayData(data) {
+            document.getElementById("content").innerText = data;
+        }
     </script>
 </body>
 
